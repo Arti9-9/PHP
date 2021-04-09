@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<workers>
+    <worker>
+        <name>Artem</name>
+        <passport>4213347825</passport>
+        <post>Director</post>
+    </worker>
+    <worker>
+        <name>Anna</name>
+        <passport>4125126289</passport>
+        <post>Associate-Director</post>
+    </worker>
+    <worker>
+        <name>Maksim</name>
+        <passport>4125198635</passport>
+        <post>Security</post>
+    </worker>
+</workers>
