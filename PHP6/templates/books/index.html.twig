@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {#    footer#}
+    {{ include('default/header.html.twig') }}
+    {#    block-main#}
+    <div class="container">
+        <div class="row mt-5 mb-3 justify-content-center">
+            <h1 class="display-4 text-light">
+                Библиотека
+            </h1>
+        </div>
+        <div class="container">
+            <div class="d-flex justify-content-start flex-wrap">
+                {% for book in books %}
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <img src="{{ asset('uploads/img/' ~ book.cover ) }}" width="286" height="286" class="card-img-top" alt="Картинка продукта">
+                            </div>
+                            <div class="col-sm-8">
+                                <h5 class="card-title text-truncate">{{ book.name }}</h5>
+                                <h5 class="card-title text-truncate">{{ book.author }}</h5>
+                                <p class="card-text text-muted">{{ book.date ? book.date|date('Y-m-d H:i:s') : '' }}</p>
+                                <a href="{{ asset('uploads/file/' ~ book.file) }}" class="btn btn-primary col-6">Читать</a>
+                                {% if app.user %}
+                                    <div class="d-flex justify-content-between mt-2">
+                                        <a href="{{ path('books_edit', {'id': book.id}) }}" class="btn btn-danger">Редактировать</a>
+                                        <a href="{{ path('books_delete', {'id': book.id}) }}" class="btn btn-danger">Удалить</a>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                {% else %}
+                    <h2 class="text-center">Нету продуктов</h2>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
