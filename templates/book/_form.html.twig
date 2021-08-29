@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Добавить продукт{% endblock %}
+
+{% block body %}
+    <div class="d-flex container container_optimalHeight align-items-center">
+        <div class="d-flex container-fluid justify-content-center h-70">
+            {{ form_start(bookForm, { 'attr': {'class': 'd-flex flex-column w-50 justify-content-center'} }) }}
+            <h1 class="h1 mb-5 font-weight-normal text-center text-light"><span class="logo_red">Д</span>обавить книгу</h1>
+            {% set formErrors = bookForm.vars.errors.form.getErrors(true) %}
+            {% if formErrors|length %}
+                <div class="alert alert-danger">
+                    <label>Исправте следующие ошибки:</label>
+                    <ul>
+                        {% for error in formErrors %}
+                            <li>{{ error.message }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+            <div class="row mb-3 d-flex justify-content-around">
+                {{ form_label(bookForm.title, bookForm.title, { 'label_attr': {'class': 'text-light text-center label_width_product'} }) }}
+                {{ form_widget(bookForm.title, { 'attr': {'class': 'input_width form-control'} }) }}
+            </div>
+            <div class="row mb-3 d-flex justify-content-around">
+                {{ form_label(bookForm.author, bookForm.author, { 'label_attr': {'class': 'text-light text-center label_width_product'} }) }}
+                {{ form_widget(bookForm.author, { 'attr': {'class': 'input_width form-control'} }) }}
+            </div>
+            <div class="row mb-3 d-flex justify-content-around">
+                {{ form_label(bookForm.image, bookForm.image, { 'label_attr': {'class': 'text-light'} }) }}
+                {{ form_widget(bookForm.image) }}
+            </div>
+            <div class="row mb-3 d-flex justify-content-around">
+                {{ form_label(bookForm.file, bookForm.file, { 'label_attr': {'class': 'text-light'} }) }}
+                {{ form_widget(bookForm.file) }}
+            </div>
+            <div class="row justify-content-center mt-3">
+                <button class="btn btn-lg btn-dark col-6 btn_style">{{ button_label|default('Добавить') }}</button>
+            </div>
+            {{ form_end(bookForm) }}
+        </div>
+    </div>
+{% endblock %}
+
